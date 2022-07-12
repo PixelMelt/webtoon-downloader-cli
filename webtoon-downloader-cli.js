@@ -99,6 +99,7 @@ async function downloadToonImages(link,imageAmount,document,comicName,comicInfo)
         //check if image exists
         if(!fs.existsSync(`./webtoons/${comicName}/${comicInfo.number}/${i+1}.jpg`)){
             let image = document.querySelectorAll(`#_imageList`)[0].children[i].getAttribute('data-url')
+            image = image.replace(`?type=q90`,``)
             // console.log(image)
             // console.log(`Downloading image ${i + 1} of ${imageAmount}`);
     
@@ -208,7 +209,8 @@ async function downloadWebtoon(link,startep,endep){
         console.log(`Invalid link provided`);
         return
     }
-    console.log(`Webtoon link: ${link}`);
+    console.log(``)
+    // console.log(`Webtoon link: ${link}`);
 
     let html = await getWebsite(link)
     // console.log(`Webtoon info received`);
